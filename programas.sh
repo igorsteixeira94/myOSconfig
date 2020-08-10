@@ -21,19 +21,19 @@ sudo apt update -y
 sudo apt-add-repository $PPA_GRAPHICS_DRIVERS -y
 
 # ----------------------------- EXECUÇÃO ----------------------------- #
-## Atualizando o repositório depois da adição de novos repositórios ##
+##----------------------------- Atualizando o repositório depois da adição de novos repositórios ##
 sudo apt update -y
 
 mkdir "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME"       -P "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_VSCODE"         -P "$DIRETORIO_DOWNLOADS"
 
-## Instalando pacotes .deb baixados na sessão anterior ##
+##-----------------Instalando pacotes .deb baixados na sessão anterior ##
 sudo dpkg -i $DIRETORIO_DOWNLOADS/*.deb
 sudo apt install -f
 
 
-#Programas para serem instalados via apt-get install
+#-----------------Programas para serem instalados via apt-get install
 PROGRAMAS_PARA_INSTALAR=(
 gnome-system-monitor
 gnome-calculator
@@ -49,7 +49,7 @@ git
 
 )
 
-# Instalar programas no apt
+# -----------------Instalar programas no apt
 for nome_do_programa in ${PROGRAMAS_PARA_INSTALAR[@]}; do
   if ! dpkg -l | grep -q $nome_do_programa; then # Só instala se já não estiver instalado
     sudo apt install "$nome_do_programa" -y
@@ -57,6 +57,9 @@ for nome_do_programa in ${PROGRAMAS_PARA_INSTALAR[@]}; do
     echo "[INSTALADO] - $nome_do_programa"
   fi
 done
+
+#-------------Nvidia
+sudo ubuntu-drivers autoinstall
 
 #Programar para instalar via snap
 sudo snap install spotify
@@ -69,19 +72,18 @@ sudo snap install libreoffice
 #------------------DOCKER-----------
 sudo apt install docker.io
 docker -v
+
 #---rodar docker sem sudo
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
-docker run hello-world
 
 #---Docker composer
-sudo curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+sudo apt install docker-compose -y
 
 #------ Configurar git
-git config --global user.name "Igor Rodrigues"
-git config --global user.email "igorsteixeira94@gmail.com"
+git config --global user.name "Your name"
+git config --global user.email "iYour mail"
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
 echo "Começar a limpeza"
