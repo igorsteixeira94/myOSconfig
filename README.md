@@ -1,24 +1,21 @@
 ### Configurações basicas do sistema
-  * Remover os snaps e instalar o .dev ! 
-  * Instalar CODECS
-  * Extensoes (SOUND INPUT & OUTPUT DEVICE CHOSSER) e (MULTI MONITORS ADD-ON)
-  * Gnome Tweaks;
-  * Piper
+  * Remover os snaps e instalar os .dev ! ok
+  * Instalar CODECS ok
+  * Extensoes (SOUND INPUT & OUTPUT DEVICE CHOSSER) e (MULTI MONITORS ADD-ON) manualmente
+  * Gnome Tweaks; ok
   
 ### App do dia-a-dia:
-  * Navegador Chrome;
-  * Spotify;
-  * Discord;
-  * VLC;
-  * LibreOffice;
-  * Anki;
-  * FileZilla
-  * qBitTorrent.
+  * Navegador Chrome; ok
+  * Spotify; ok
+  * Discord; ok
+  * VLC; ok
+  * LibreOffice; ok
+  * qBitTorrent. ok
   
 ### App de trabalho
-* Insomnia;
-* VsCode;
-* Typora;
-* DevDocs;
+* Insomnia; ok
+* VsCode; ok
+* DevDocs; ok
+* docker/docker-compose; ok
 
 ### Ambiente Node e Python
