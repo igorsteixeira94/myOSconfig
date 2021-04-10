@@ -4,12 +4,9 @@
 PPA_GRAPHICS_DRIVERS="ppa:graphics-drivers/ppa"
 
 URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-URL_VSCODE="https://az764295.vo.msecnd.net/stable/91899dcef7b8110878ea59626991a18c8a6a1b3e/code_1.47.3-1595520028_amd64.deb"
 
 DIRETORIO_DOWNLOADS="$HOME/Downloads/programas"
 
-#Remover snaps
-sudo snap remove gnome-system-monitor gnome-calculator gnome-characters gnome-logs -y
 
 ## Removendo travas eventuais do apt ##
 sudo rm /var/lib/dpkg/lock-frontend
@@ -32,21 +29,16 @@ wget -c "$URL_VSCODE"         -P "$DIRETORIO_DOWNLOADS"
 sudo dpkg -i $DIRETORIO_DOWNLOADS/*.deb
 sudo apt install -f
 
+#instalando o JAVA
+sudo add-apt-repository ppa:openjdk-r/ppa -y
+sudo apt-get update -y
+sudo apt-get install openjdk-11-jdk -y
+
 
 #-----------------Programas para serem instalados via apt-get install
 PROGRAMAS_PARA_INSTALAR=(
-gnome-system-monitor
-gnome-calculator
-gnome-characters
-gnome-logs
-gnome-tweak-tool
-ubuntu-restricted-extras
-qbittorrent
-typora
-zsh
-curl
 git
-
+snapd
 )
 
 # -----------------Instalar programas no apt
@@ -59,19 +51,34 @@ for nome_do_programa in ${PROGRAMAS_PARA_INSTALAR[@]}; do
 done
 
 #-------------Nvidia
-sudo ubuntu-drivers autoinstall
+sudo ubuntu-drivers autoinstall -y
 
-#Programar para instalar via snap
-sudo snap install spotify
-sudo snap install discord
-sudo snap install insomnia
-sudo snap install vlc
-sudo snap install libreoffice
+#-----------------Programas para serem instalados via snap
+PROGRAMAS_PARA_INSTALAR=(
+spotify
+discord
+insomnia
+vlc
+code --classic
+node --classic
+android-studio --classic
+docker
+)
+
+# -----------------Instalar programas via snap
+for nome_do_programa in ${PROGRAMAS_PARA_INSTALAR[@]}; do
+  if ! dpkg -l | grep -q $nome_do_programa; then # Só instala se já não estiver instalado
+    sudo snap install "$nome_do_programa"
+  else
+    echo "[INSTALADO] - $nome_do_programa"
+  fi
+done
+
+# instalando yarn
+sudo npm install --global yarn -y
 
 
-#------------------DOCKER-----------
-sudo apt install docker.io
-docker -v
+
 
 #---rodar docker sem sudo
 sudo groupadd docker
@@ -82,8 +89,8 @@ newgrp docker
 sudo apt install docker-compose -y
 
 #------ Configurar git
-git config --global user.name "Your name"
-git config --global user.email "iYour mail"
+git config --global user.name "Igor Rodrigues"
+git config --global user.email "igorsteixeira94@gmail.com"
 # ----------------------------- PÓS-INSTALAÇÃO ----------------------------- #
 ## Finalização, atualização e limpeza##
 echo "Começar a limpeza"

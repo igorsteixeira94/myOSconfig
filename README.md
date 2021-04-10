@@ -19,3 +19,4 @@
 * docker/docker-compose; ok
 
 ### Ambiente Node e Python
+* Node; ok
