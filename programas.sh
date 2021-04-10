@@ -23,13 +23,12 @@ sudo apt update -y
 
 mkdir "$DIRETORIO_DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME"       -P "$DIRETORIO_DOWNLOADS"
-wget -c "$URL_VSCODE"         -P "$DIRETORIO_DOWNLOADS"
 
 ##-----------------Instalando pacotes .deb baixados na sessão anterior ##
 sudo dpkg -i $DIRETORIO_DOWNLOADS/*.deb
 sudo apt install -f
 
-#instalando o JAVA
+#instalando o JAVA para Android Studio
 sudo add-apt-repository ppa:openjdk-r/ppa -y
 sudo apt-get update -y
 sudo apt-get install openjdk-11-jdk -y
